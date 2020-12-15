@@ -1,4 +1,8 @@
 package org.example;
 
-public class App {
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+@ApplicationPath("resources")
+public class App extends Application {
 }
