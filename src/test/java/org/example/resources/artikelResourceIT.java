@@ -5,6 +5,7 @@ import org.example.domain.Artikel;
 import org.example.domain.Categorie;
 import org.example.domain.Gebruiker;
 import org.example.domain.Soort;
+import org.example.domain.dao.AbstractEntity;
 import org.example.domain.dao.ArtikelDao;
 import org.example.domain.dao.Dao;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -44,15 +45,7 @@ public class artikelResourceIT {
     @Deployment
     public static Archive<?> createDeployment() {
         WebArchive archive = ShrinkWrap.create(WebArchive.class, "ArtikelResourceIT.war")
-                .addClass(App.class)
-                .addClass(JsonResource.class)
-                .addClass(ArtikelResource.class)
-                .addClass(Artikel.class)
-                .addClass(Dao.class)
-                .addClass(ArtikelDao.class)
-                .addClass(Categorie.class)
-                .addClass(Soort.class)
-                .addClass(Gebruiker.class)
+                .addPackages(true, App.class.getPackage())
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml");
 
         System.out.println(archive.toString(true));

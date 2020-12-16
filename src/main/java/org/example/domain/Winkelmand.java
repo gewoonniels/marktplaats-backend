@@ -39,10 +39,7 @@ public class Winkelmand implements AbstractEntity<Long> {
     }
 
     public void removeArtikel(Artikel a) {
-        System.out.println(a);
-        System.out.println(artikelen.size());
         artikelen.remove(a);
-        System.out.println(artikelen.size());
     }
 
     public void setEigenaar(Gebruiker eigenaar) {

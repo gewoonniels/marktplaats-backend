@@ -19,16 +19,12 @@ public class Dao<E extends AbstractEntity<Long>> {
 
     public E getById(long id) { return em.find(E(), id); }
 
-    public Collection<E> get(String q) {
-        return null;
-    }
-
     public E add(E c) {
         em.persist(c);
         return c;
     }
 
-    public boolean remove(String id) {
+    public boolean remove(Long id) {
         E e = em.find(E(), id);
         if (e == null) return false;
 

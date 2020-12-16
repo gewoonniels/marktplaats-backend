@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import java.util.Collection;
 
 @Path("/artikel")
@@ -26,8 +27,9 @@ public class ArtikelResource implements JsonResource {
     }
 
     @POST
-    public Artikel addArtikel(Artikel a){
-        Gebruiker gebruiker = gebruikerDao.getById(a.getId());
+    @Path("/{eigenaarid}")
+    public Artikel addArtikel(@PathParam("eigenaarid") Long id, Artikel a){
+        Gebruiker gebruiker = gebruikerDao.getById(id);
         gebruiker.addArtikel(a);
         gebruikerDao.update(gebruiker.getID(), gebruiker);
         return a;
